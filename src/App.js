@@ -1,9 +1,14 @@
 import React from "react";
+import Nav from "./components/Nav";
+import Song from "./components/Song";
+import Player from "./components/Player";
 
 function App() {
   return (
     <div className="App">
-      <h1>hey</h1>
+      <Nav />
+      <Song />
+      <Player />
     </div>
   );
 }
