@@ -2,10 +2,10 @@ import React from "react";
 
 function Nav() {
   return (
-    <div>
+    <nav>
       <h1>waves</h1>
       <button>Library</button>
-    </div>
+    </nav>
   );
 }
 
