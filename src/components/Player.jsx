@@ -26,23 +26,29 @@ function Player({
     }
   };
 
-  const skipTrackHandler = (direction) => {
+  const skipTrackHandler = async (direction) => {
     let currentIndex = songs.findIndex(
       (element) => element.id === currentSong.id
     );
 
     if (direction === "skip-forward") {
-      console.log(currentIndex);
-      SetCurrentSong(songs[(currentIndex + 1) % songs.length]); // this means
+      await SetCurrentSong(songs[(currentIndex + 1) % songs.length]); // this means
       // that once it reaches the songs length set index back to 0
+      if (isPlaying) {
+        audioRef.current.play();
+      }
     }
     if (direction === "skip-back") {
       if ((currentIndex - 1) % songs.length === -1) {
-        console.log(currentIndex);
-        SetCurrentSong(songs[songs.length - 1]);
+        await SetCurrentSong(songs[songs.length - 1]);
+        if (isPlaying) {
+          audioRef.current.play();
+        }
       } else {
-        console.log(currentIndex);
-        SetCurrentSong(songs[currentIndex - 1]);
+        await SetCurrentSong(songs[currentIndex - 1]);
+        if (isPlaying) {
+          audioRef.current.play();
+        }
       }
     }
   };
