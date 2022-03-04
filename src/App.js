@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Nav from "./components/Nav";
 import Song from "./components/Song";
 import Player from "./components/Player";
@@ -7,11 +7,15 @@ import "./styles/app.scss";
 import data from "./data";
 
 function App() {
+  //State
+  const [songs, setSongs] = useState(data());
+  const [currentSong, SetCurrentSong] = useState(songs[0]);
+
   return (
     <div className="App">
       <Nav />
-      <Song />
-      <Player />
+      <Song songs={songs} currentSong={currentSong} />
+      <Player songs={songs} currentSong={currentSong} />
     </div>
   );
 }

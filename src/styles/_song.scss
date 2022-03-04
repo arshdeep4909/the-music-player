@@ -3,11 +3,18 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .song-cover {
   margin-bottom: 3rem;
-  border-radius: 5px;
+
+  img {
+    height: 250px;
+
+    object-fit: cover;
+    border-radius: 50px;
+  }
 }
 
 .song-name {

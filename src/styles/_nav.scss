@@ -4,11 +4,15 @@ nav {
   min-height: 10vh;
   align-items: center;
   button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background: transparent;
     padding: 10px;
     cursor: pointer;
     border: 2px solid black;
     transition: all 0.3s ease;
+    width: 85px;
     &:hover {
       background: rgb(65, 65, 65);
       color: white;
