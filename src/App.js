@@ -3,6 +3,8 @@ import Nav from "./components/Nav";
 import Song from "./components/Song";
 import Player from "./components/Player";
 import "./styles/app.scss";
+//Import Data
+import data from "./data";
 
 function App() {
   return (
