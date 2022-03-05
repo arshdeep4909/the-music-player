@@ -3,6 +3,7 @@ import Nav from "./components/Nav";
 import Song from "./components/Song";
 import Player from "./components/Player";
 import "./styles/app.scss";
+import Library from "./components/Library";
 //Import Data
 import data from "./data";
 
@@ -22,6 +23,7 @@ function App() {
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
       />
+      <Library songs={songs} />
     </div>
   );
 }

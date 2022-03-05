@@ -1,0 +1,60 @@
+//all the styles for library and librarySong are done here
+
+.library {
+  position: fixed;
+  background: white;
+  top: 0;
+  left: 0;
+  max-width: 300px;
+  height: 100%;
+  box-shadow: 2px 2px 50px rgb(206, 203, 203);
+  overflow: auto;
+  h2 {
+    text-align: center;
+    margin: 15px 0;
+  }
+}
+
+.library-song {
+  transition: all 0.5s ease;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 1rem 2rem;
+  img {
+    width: 30%;
+    border-radius: 20px;
+  }
+  &:hover {
+    background: rgb(238, 217, 238);
+  }
+}
+
+.song-description {
+  padding-left: 1rem;
+  h3 {
+    font-size: 1rem;
+  }
+  h4 {
+    font-size: 0.7rem;
+  }
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(78, 78, 78) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgb(206, 205, 205);
+  border-radius: 20px;
+  border: transparent;
+}
