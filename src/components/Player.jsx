@@ -10,27 +10,17 @@ import {
 function Player({
   currentSong,
   songs,
-  SetCurrentSong,
+  setCurrentSong,
   isPlaying,
   setIsPlaying,
+  audioRef,
+  setSongInfo,
+  songsInfo,
+  playSongHandler,
 }) {
-  //Ref
-  const audioRef = useRef(null);
   //State
-  const [songsInfo, setSongInfo] = useState({
-    currentTime: "",
-    duration: "",
-  });
+
   //Event Handlers
-  const playSongHandler = () => {
-    if (isPlaying) {
-      audioRef.current.pause();
-      setIsPlaying(!isPlaying);
-    } else {
-      audioRef.current.play();
-      setIsPlaying(!isPlaying);
-    }
-  };
 
   const skipTrackHandler = async (direction) => {
     let currentIndex = songs.findIndex(
@@ -38,7 +28,7 @@ function Player({
     );
 
     if (direction === "skip-forward") {
-      await SetCurrentSong(songs[(currentIndex + 1) % songs.length]); // this means
+      await setCurrentSong(songs[(currentIndex + 1) % songs.length]); // this means
       // that once it reaches the songs length set index back to 0
       if (isPlaying) {
         audioRef.current.play();
@@ -46,23 +36,17 @@ function Player({
     }
     if (direction === "skip-back") {
       if ((currentIndex - 1) % songs.length === -1) {
-        await SetCurrentSong(songs[songs.length - 1]);
+        await setCurrentSong(songs[songs.length - 1]);
         if (isPlaying) {
           audioRef.current.play();
         }
       } else {
-        await SetCurrentSong(songs[currentIndex - 1]);
+        await setCurrentSong(songs[currentIndex - 1]);
         if (isPlaying) {
           audioRef.current.play();
         }
       }
     }
-  };
-  // updating the state as the song is playing
-  const timeUpdateHandler = (e) => {
-    const current = e.target.currentTime;
-    const duration = e.target.duration;
-    setSongInfo({ ...songsInfo, currentTime: current, duration: duration });
   };
 
   const dragHandler = (e) => {
@@ -110,14 +94,6 @@ function Player({
           icon={faAngleRight}
         />
       </div>
-      <audio
-        onTimeUpdate={timeUpdateHandler}
-        onLoadedMetadata={timeUpdateHandler}
-        ref={audioRef}
-        src={currentSong.audio}
-      >
-        {" "}
-      </audio>
     </div>
   );
 }

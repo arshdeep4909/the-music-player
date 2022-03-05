@@ -1,9 +1,20 @@
 import React from "react";
 
-function LibrarySong({ song, songs, setSongs, currentSong, setCurrentSong }) {
+function LibrarySong({
+  song,
+  songs,
+  setSongs,
+  setCurrentSong,
+  isPlaying,
+  audioRef,
+  setIsPlaying,
+  toggleSongHandler,
+}) {
   //Event Handlers
-  const songSelecteHandler = () => {
-    setCurrentSong(song);
+  const songSelecteHandler = async () => {
+    await setCurrentSong(song);
+    toggleSongHandler();
+    audioRef.current.play();
 
     //ADD active stage
     const newSongs = songs.map((element) => {
