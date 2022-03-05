@@ -1,8 +1,32 @@
 import React from "react";
 
-function LibrarySong({ song }) {
+function LibrarySong({ song, songs, setSongs, currentSong, setCurrentSong }) {
+  //Event Handlers
+  const songSelecteHandler = () => {
+    setCurrentSong(song);
+
+    //ADD active stage
+    const newSongs = songs.map((element) => {
+      if (element.id === song.id) {
+        return {
+          ...element,
+          active: true,
+        };
+      } else {
+        return {
+          ...element,
+          active: false,
+        };
+      }
+    });
+    setSongs(newSongs);
+  };
   return (
-    <div className="library-song">
+    <div
+      onClick={songSelecteHandler}
+      className={`library-song ${song.active ? "selected" : ""}`}
+      // if the song is active then add className selected
+    >
       <img src={song.cover} alt="album-cover" />
       <div className="song-description">
         <h3 className="song-name">{song.name}</h3>
