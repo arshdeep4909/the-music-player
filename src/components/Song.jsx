@@ -4,7 +4,7 @@ function Song({ songs, currentSong }) {
   return (
     <div className="song-container">
       <h1 className="song-cover">
-        <img src={currentSong.cover} alt="" />
+        <img src={currentSong.cover} alt="album-cover" />
       </h1>
       <h1 className="song-name">{currentSong.name}</h1>
       <h1 className="song-artist">{currentSong.artist}</h1>
