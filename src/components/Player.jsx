@@ -18,27 +18,11 @@ function Player({
   songsInfo,
   playSongHandler,
   setSongs,
+  activeSongHandler,
 }) {
   //State
 
   //Event Handlers
-
-  const activeSongHandler = (activeSong) => {
-    const newSongs = songs.map((element) => {
-      if (element.id === activeSong.id) {
-        return {
-          ...element,
-          active: true,
-        };
-      } else {
-        return {
-          ...element,
-          active: false,
-        };
-      }
-    });
-    setSongs(newSongs);
-  };
 
   const skipTrackHandler = async (direction) => {
     let currentIndex = songs.findIndex(
@@ -51,7 +35,7 @@ function Player({
       activeSongHandler(songs[(currentIndex + 1) % songs.length]);
 
       if (isPlaying) {
-        audioRef.current.play();
+        await audioRef.current.play();
       }
     }
     if (direction === "skip-back") {
@@ -59,12 +43,12 @@ function Player({
         await setCurrentSong(songs[songs.length - 1]);
         activeSongHandler(songs[songs.length - 1]);
         if (isPlaying) {
-          audioRef.current.play();
+          await audioRef.current.play();
         }
       } else {
         await setCurrentSong(songs[currentIndex - 1]);
         activeSongHandler(songs[currentIndex - 1]);
-        audioRef.current.play();
+        await audioRef.current.play();
       }
     }
   };

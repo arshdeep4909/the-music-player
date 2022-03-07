@@ -41,7 +41,7 @@ function LibrarySong({
     setSongs(newSongs);
   };
 
-  const libraryPlaySongHandler = async () => {
+  const libraryPlaySongHandler = () => {
     if (isPlaying) {
       audioRef.current.play();
     } else if (!isPlaying) {
