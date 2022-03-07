@@ -77,7 +77,7 @@ function data() {
       cover:
         " https://chillhop.com/wp-content/uploads/2021/11/4c9682ee612a3b8ef51de286c49b5489408e9257-300x300.jpg ",
       id: uuidv4(),
-      active: false,
+      active: true,
       audio: "https://mp3.chillhop.com/serve.php/?mp3=27500",
     },
   ];
