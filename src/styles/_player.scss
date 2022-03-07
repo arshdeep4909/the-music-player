@@ -32,7 +32,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 2rem;
   svg {
     cursor: pointer;
   }
@@ -45,8 +45,4 @@
   .play-control {
     width: 70%;
   }
-}
-
-.selected {
-  background-color: rgb(248, 179, 248);
 }

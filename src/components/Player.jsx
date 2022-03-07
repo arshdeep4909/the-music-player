@@ -84,15 +84,17 @@ function Player({
     <div className="player">
       <div className="time-control">
         <p>{getTime(songsInfo.currentTime)}</p>
-        <input
-          min={0}
-          max={songsInfo.duration || 0}
-          value={songsInfo.currentTime}
-          onChange={dragHandler}
-          type="range"
-          className="track"
-        />
-        <p>{getTime(songsInfo.duration)}</p>
+        <div className="track">
+          <input
+            min={0}
+            max={songsInfo.duration || 0} //using OR operator to add default value to avoid errors
+            value={songsInfo.currentTime}
+            onChange={dragHandler} // everytime we drag the range bar this function runs
+            type="range"
+          />
+        </div>
+
+        <p>{songsInfo.duration ? getTime(songsInfo.duration) : "0:00"}</p>
       </div>
       <div className="play-control">
         <FontAwesomeIcon

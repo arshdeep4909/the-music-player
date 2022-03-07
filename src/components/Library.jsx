@@ -1,3 +1,4 @@
+import { library } from "@fortawesome/fontawesome-svg-core";
 import React from "react";
 import LibrarySong from "./LibrarySong";
 
@@ -9,10 +10,11 @@ function Library({
   isPlaying,
   audioRef,
   setIsPlaying,
-  toggleSongHandler,
+  playSongHandler,
+  libraryStatus,
 }) {
   return (
-    <div className="library">
+    <div className={`library ${libraryStatus ? "acitve-library" : ""}`}>
       <h2 onClick={() => audioRef.current.play()}>library</h2>
       <div>
         {songs.map((song) => (
@@ -26,7 +28,7 @@ function Library({
             audioRef={audioRef}
             isPlaying={isPlaying}
             setIsPlaying={setIsPlaying}
-            toggleSongHandler={toggleSongHandler}
+            playSongHandler={playSongHandler}
           />
         ))}
       </div>

@@ -18,31 +18,28 @@ function App() {
     currentTime: "",
     duration: "",
   });
+  const [libraryStatus, setLibraryStatus] = useState(false);
 
   //Event Handlers
+  const playSongHandler = async () => {
+    if (isPlaying) {
+      await audioRef.current.pause();
+      setIsPlaying(!isPlaying);
+    } else {
+      await audioRef.current.play();
+      setIsPlaying(!isPlaying);
+    }
+  };
   // updating the state as the song is playing
   const timeUpdateHandler = (e) => {
     const current = e.target.currentTime;
     const duration = e.target.duration;
     setSongInfo({ ...songsInfo, currentTime: current, duration: duration });
   };
-  const playSongHandler = () => {
-    if (isPlaying) {
-      audioRef.current.pause();
-      setIsPlaying(!isPlaying);
-    } else {
-      audioRef.current.play();
-      setIsPlaying(!isPlaying);
-    }
-  };
-  const toggleSongHandler = () => {
-    setIsPlaying(isPlaying);
-    audioRef.current.play();
-  };
 
   return (
-    <div className="App">
-      <Nav />
+    <div className="app">
+      <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus} />
       <Song songs={songs} currentSong={currentSong} />
       <Player
         songs={songs}
@@ -72,7 +69,8 @@ function App() {
         isPlaying={isPlaying}
         setIsPlaying={setIsPlaying}
         audioRef={audioRef}
-        toggleSongHandler={toggleSongHandler}
+        playSongHandler={playSongHandler}
+        libraryStatus={libraryStatus}
       />
     </div>
   );

@@ -8,13 +8,21 @@ function LibrarySong({
   isPlaying,
   audioRef,
   setIsPlaying,
-  toggleSongHandler,
 }) {
   //Event Handlers
+  // const playSongHandler = () => {
+  //   if (isPlaying) {
+  //     audioRef.current.pause();
+  //     setIsPlaying(!isPlaying);
+  //   } else {
+  //     audioRef.current.play();
+  //     setIsPlaying(!isPlaying);
+  //   }
+  // };
+
   const songSelecteHandler = async () => {
     await setCurrentSong(song);
-    toggleSongHandler();
-    audioRef.current.play();
+    libraryPlaySongHandler();
 
     //ADD active stage
     const newSongs = songs.map((element) => {
@@ -31,6 +39,15 @@ function LibrarySong({
       }
     });
     setSongs(newSongs);
+  };
+
+  const libraryPlaySongHandler = async () => {
+    if (isPlaying) {
+      audioRef.current.play();
+    } else if (!isPlaying) {
+      audioRef.current.play();
+      setIsPlaying(!isPlaying);
+    }
   };
   return (
     <div
