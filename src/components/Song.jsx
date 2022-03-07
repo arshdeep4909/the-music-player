@@ -1,15 +1,13 @@
 import React from "react";
 
-function Song({ songs, currentSong }) {
+const Song = ({ currentSong }) => {
   return (
     <div className="song-container">
-      <h1 className="song-cover">
-        <img src={currentSong.cover} alt="album-cover" />
-      </h1>
-      <h1 className="song-name">{currentSong.name}</h1>
-      <h1 className="song-artist">{currentSong.artist}</h1>
+      <img alt={currentSong.name} src={currentSong.cover}></img>
+      <h2>{currentSong.name} </h2>
+      <h3> {currentSong.artist} </h3>
     </div>
   );
-}
+};
 
 export default Song;

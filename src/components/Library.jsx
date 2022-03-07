@@ -14,9 +14,9 @@ function Library({
   libraryStatus,
 }) {
   return (
-    <div className={`library ${libraryStatus ? "acitve-library" : ""}`}>
+    <div className={`library ${libraryStatus ? "active-library" : ""}`}>
       <h2 onClick={() => audioRef.current.play()}>library</h2>
-      <div>
+      <div className="library-songs">
         {songs.map((song) => (
           <LibrarySong
             song={song}

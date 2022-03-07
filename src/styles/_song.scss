@@ -2,30 +2,38 @@
   min-height: 60vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-}
-
-.song-cover {
-  margin-bottom: 3rem;
-
+  align-items: center;
   img {
-    height: 250px;
-
-    object-fit: cover;
-    border-radius: 50px;
+    width: 25%;
+    border-radius: 50%;
+    transition: all 2s ease;
+  }
+  h2 {
+    padding: 3rem 1rem 1rem 1rem;
+  }
+  h3 {
+    font-size: 1rem;
   }
 }
 
-.song-name {
-  font-family: "Lobster", cursive;
-  font-weight: 500;
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
+@media screen and (max-width: 768px) {
+  .song-container {
+    img {
+      width: 60%;
+    }
+  }
 }
 
-.song-artist {
-  font-family: "Inter", sans-serif;
-  font-size: 1rem;
-  font-weight: 200;
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotateSong {
+  animation: rotate 20s linear forwards infinite;
 }
